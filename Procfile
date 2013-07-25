@@ -1,1 +1,1 @@
-web: gunicorn iamriel.wsgi
+web: gunicorn wsgi

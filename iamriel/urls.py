@@ -6,8 +6,6 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
-    # url(r'^$', 'iamriel.views.home', name='home'),
-    # url(r'^iamriel/', include('iamriel.foo.urls')),
-
+    url(r'^$', 'main.views.home', name='home'),
     url(r'^admin/', include(admin.site.urls)),
 )

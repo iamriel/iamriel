@@ -112,6 +112,7 @@ ROOT_URLCONF = 'iamriel.urls'
 WSGI_APPLICATION = 'iamriel.wsgi.application'
 
 TEMPLATE_DIRS = (
+    os.path.join(BASE_DIR, '..', 'templates'),
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -125,6 +126,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
+
+    #  Project apps
+    'main',
 )
 
 # A sample logging configuration. The only tangible logging

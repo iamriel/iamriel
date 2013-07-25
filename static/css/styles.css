@@ -859,9 +859,10 @@ section {
 
 /* FlexSlider Necessary Styles
 *********************************/
-.flexslider {margin: 0; padding: 0; background:#f5f5f5;}
+.flexslider {margin: 0; padding: 0; background:black;}
 .flexslider .slides > li {display: none; -webkit-backface-visibility: hidden;} /* Hide the slides before the JS is loaded. Avoids image jumping */
-.flexslider .slides > li:first-child { background:url('/static/img/spinner.gif') center center no-repeat #f5f5f5;}
+/*.flexslider .slides > li:first-child { min-height: 300px; background:url('/static/img/spinner.gif') center center no-repeat #f5f5f5;}*/
+.flexslider .slides > li:first-child {min-height: 300px; min-width: 300px; background-color: #000;}
 .flexslider .slides img {max-width: 100%; display: block;}
 .flex-pauseplay span {text-transform: capitalize;}
 
@@ -927,189 +928,189 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#4C000000,endCol
 ****************** RESPONSIVE CSS
 ********************************************/	
 
-	/*Landscape phones and down 360&320px */
-	@media (max-width: 400px) {
-		body { 
-			padding:20px;
-			padding-top:0px;		
-		}
-		.tab-content { 
-			padding-left:0px !important;
-		}
-		.metro {
-			border-left:0px;
-		}
-		.container { 
-			width:260px;
-		}
-		.flexslider, .tab-pane {
-			width:240px;
-		}
-		.flex-caption { 
-			display:none;
-		}
-		.flex-control-nav  {
-			display:none;
-		}
-		.span4 {
-			margin-bottom:35px !important;
-		}
-		.map { 
-			width:240px !important;
-			height:230px !important;
-		}
-		.mainslider {
-			height:80px !important;
-		}
-		#nav{
-			margin-left: -4px;
-		}
-		#nav li{
-			font-size: 16px;
-		}
-		.social{
-		    margin-left: 22px;
-			margin-right: 8px;
-		}
-		.progress-bar{
-			width: 70%;
-		}
-		
-		h4 {
-			font-size: 12px;
-		}
-		.work-time{
-			 padding: 0;
-		}
-		
-		.study-time {
-			 margin-left: 20px;
-             padding: 0;
-	    }
-		ul.personal-info .title{
-			padding: 4px 10px;
-		}
-		ul.personal-info .value{
-			margin-left: 4px;
-		}
-		
+/*Landscape phones and down 360&320px */
+@media (max-width: 400px) {
+	body { 
+		padding:20px;
+		padding-top:0px;		
 	}
-	@media (min-width: 400px)  and (max-width: 479px) {
-		body { padding:20px; padding-top:0px; }
-		.metro { border-left:0px;}
-		.container { width:260px;}
-		.flexslider, .tab-pane {width:240px;}
-		.flex-caption { display:none; }
-		.flex-control-nav  { display:none}
-		.span4 { margin-bottom:35px !important;}
-		.map { width:240px !important; height:230px !important;}
-		.mainslider { height:80px !important;}
-		
+	.tab-content { 
+		padding-left:0px !important;
+	}
+	.metro {
+		border-left:0px;
+	}
+	.container { 
+		width:260px;
+	}
+	.flexslider, .tab-pane {
+		width:240px;
+	}
+	.flex-caption { 
+		display:none;
+	}
+	.flex-control-nav  {
+		display:none;
+	}
+	.span4 {
+		margin-bottom:35px !important;
+	}
+	.map { 
+		width:240px !important;
+		height:230px !important;
+	}
+	.mainslider {
+		height:80px !important;
+	}
+	#nav{
+		margin-left: -4px;
+	}
+	#nav li{
+		font-size: 16px;
+	}
+	.social{
+	    margin-left: 22px;
+		margin-right: 8px;
+	}
+	.progress-bar{
+		width: 70%;
+	}
+	
+	h4 {
+		font-size: 12px;
+	}
+	.work-time{
+		 padding: 0;
+	}
+	
+	.study-time {
+		 margin-left: 20px;
+         padding: 0;
+    }
+	ul.personal-info .title{
+		padding: 4px 10px;
+	}
+	ul.personal-info .value{
+		margin-left: 4px;
+	}
+	
+}
+@media (min-width: 400px)  and (max-width: 479px) {
+	body { padding:20px; padding-top:0px; }
+	.metro { border-left:0px;}
+	.container { width:260px;}
+	.flexslider, .tab-pane {width:240px;}
+	.flex-caption { display:none; }
+	.flex-control-nav  { display:none}
+	.span4 { margin-bottom:35px !important;}
+	.map { width:240px !important; height:230px !important;}
+	.mainslider { height:80px !important;}
+	
 
-		
+	
+}
+
+
+/* Landscape phone to portrait tablet*/
+@media (min-width: 479px) and (max-width: 767px) {
+	body { padding:20px; padding-top:0px; }
+	.metro { border-left:0px;}
+	.container { max-width:420px;}
+	.flexslider, .tab-pane {max-width:400px;}
+	.flex-caption { display:none;}
+	.flex-control-nav  { display:none}
+	.span4 { margin-bottom:35px !important;}
+	.map { width:400px !important; height:410px !important;}
+	.mainslider { height:135px !important;}
+	
+	
+}
+
+
+
+@media (min-width: 767px) and (max-width: 980px) {
+	.flex-caption  p{
+		display:none;
+	}
+	.flexslider h3  { 
+		font-size:14px !important;
+		line-height:16px;
+	}
+	
+	.map {
+		width:230px !important; 
+		height:410px !important;
+	}
+	.mainslider { 
+		height:245px !important;
 	}
 	
 	
-	/* Landscape phone to portrait tablet*/
-	@media (min-width: 479px) and (max-width: 767px) {
-		body { padding:20px; padding-top:0px; }
-		.metro { border-left:0px;}
-		.container { max-width:420px;}
-		.flexslider, .tab-pane {max-width:400px;}
-		.flex-caption { display:none;}
-		.flex-control-nav  { display:none}
-		.span4 { margin-bottom:35px !important;}
-		.map { width:400px !important; height:410px !important;}
-		.mainslider { height:135px !important;}
-		
-		
+	#nav{
+		margin-left: 222px !important;
+	}
+	.social{
+		margin-left: 150px;
+	}
+	.flex-control-nav{
+		margin-left: 310px;
+		width: 58%;
+	}
+	h4 {
+		font-size: 12px;
+	}
+	.work-time{
+		 padding: 0;
 	}
 	
+	.study-time {
+		 margin-left: 20px;
+         padding: 0;
+    }
 	
-	
-	@media (min-width: 767px) and (max-width: 980px) {
-		.flex-caption  p{
-			display:none;
-		}
-		.flexslider h3  { 
-			font-size:14px !important;
-			line-height:16px;
-		}
-		
-		.map {
-			width:230px !important; 
-			height:410px !important;
-		}
-		.mainslider { 
-			height:245px !important;
-		}
-		
-		
-		#nav{
-			margin-left: 222px !important;
-		}
-		.social{
-			margin-left: 150px;
-		}
-		.flex-control-nav{
-			margin-left: 310px;
-			width: 58%;
-		}
-		h4 {
-			font-size: 12px;
-		}
-		.work-time{
-			 padding: 0;
-		}
-		
-		.study-time {
-			 margin-left: 20px;
-             padding: 0;
-	    }
-		
-		.progress-bar{
-			width: 76%;
-		}
-		ul.personal-info .title{
-			padding: 4px 10px;
-		}
-		ul.personal-info .value{
-			margin-left: 4px;
-		}
-		.btn-group {
-			margin-left: 8px !important;
-		}
-	
+	.progress-bar{
+		width: 76%;
 	}
-	/* Portrait tablet to landscape and desktop*/
-	@media (min-width: 980px) and (max-width: 1200px) {
-	
-		.flexslider h3  { 
-			font-size:14px !important;
-		}
-		.map { 
-			width:300px !important;
-		}
-		.mainslider { 
-			height:320px !important;
-		}
-		#nav{
-			margin-left: 330px !important;
-		}
-		.social{
-			margin-left: 200px;
-		}
-		.flex-control-nav{
-			margin-left: 404px;
-			width: 58%;
-		}
-		h4 {
-			font-size: 13px;
-		}
-		.btn-group {
-			margin-left: 8px !important;
-		}
-		
+	ul.personal-info .title{
+		padding: 4px 10px;
 	}
+	ul.personal-info .value{
+		margin-left: 4px;
+	}
+	.btn-group {
+		margin-left: 8px !important;
+	}
+
+}
+/* Portrait tablet to landscape and desktop*/
+@media (min-width: 980px) and (max-width: 1200px) {
+
+	.flexslider h3  { 
+		font-size:14px !important;
+	}
+	.map { 
+		width:300px !important;
+	}
+	.mainslider { 
+		height:320px !important;
+	}
+	#nav{
+		margin-left: 330px !important;
+	}
+	.social{
+		margin-left: 200px;
+	}
+	.flex-control-nav{
+		margin-left: 404px;
+		width: 58%;
+	}
+	h4 {
+		font-size: 13px;
+	}
+	.btn-group {
+		margin-left: 8px !important;
+	}
+	
+}
 	
 	

@@ -10,10 +10,13 @@ class Skill(models.Model):
 
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User)
+    user = models.OneToOneField(User, related_name='profile')
     title = models.CharField(max_length=100, blank=True)
     information = models.TextField(blank=True)
+    github_url = models.URLField(blank=True)
+    google_plus_url = models.URLField(blank=True)
     linked_in_url = models.URLField(blank=True)
+    twitter_url = models.URLField(blank=True)
     skills = models.ManyToManyField(Skill, through='UserSkill')
 
     def __str__(self):

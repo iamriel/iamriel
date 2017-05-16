@@ -1,17 +1,5 @@
-from django.http import HttpResponse
-from django.template import RequestContext, loader
+from django.views.generic.base import TemplateView
 
 
-def coming_soon(request):
-    template = loader.get_template('main/coming-soon.html')
-    context = RequestContext(request, {})
-
-    return HttpResponse(template.render(context))
-
-
-def home(request):
-    template = loader.get_template('main/base.html')
-    context = RequestContext(request, {})
-
-    return HttpResponse(template.render(context))
-
+class HomeView(TemplateView):
+    template_name = 'home.html'

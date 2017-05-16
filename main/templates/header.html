@@ -1,25 +1,54 @@
 <header class="header">
     <div class="top-bar container-fluid">
         <div class="actions">
-            <a class="btn hidden-xs" href="mailto:someone@example.com"><i class="fa fa-paper-plane" aria-hidden="true"></i> Hire Me</a>
-            <a class="btn" href="http://themes.3rdwavemedia.com/sphere/1.1/#"><i class="fa fa-download" aria-hidden="true"></i> Download My Resume</a>
+            <a class="btn hidden-xs" href="mailto:{{ active_user.email }}">
+                <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                Hire Me
+            </a>
+            <a class="btn" href="http://themes.3rdwavemedia.com/sphere/1.1/#">
+                <i class="fa fa-download" aria-hidden="true"></i>
+                Download My Resume
+            </a>
         </div><!--//actions-->
         <ul class="social list-inline">
-            <li><a href="http://themes.3rdwavemedia.com/sphere/1.1/#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-            <li><a href="http://themes.3rdwavemedia.com/sphere/1.1/#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-            <li><a href="http://themes.3rdwavemedia.com/sphere/1.1/#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-            <li><a href="http://themes.3rdwavemedia.com/sphere/1.1/#"><i class="fa fa-github-alt" aria-hidden="true"></i></a></li>
-            <li><a href="http://themes.3rdwavemedia.com/sphere/1.1/#"><i class="fa fa-skype" aria-hidden="true"></i></a></li>
+            {% if active_user.profile.linked_in_url %}
+                <li>
+                    <a href="{{ active_user.profile.linked_in_url }}">
+                        <i class="fa fa-linkedin" aria-hidden="true"></i>
+                    </a>
+                </li>
+            {% endif %}
+            {% if active_user.profile.twitter_url %}
+                <li>
+                    <a href="{{ active_user.profile.twitter_url }}">
+                        <i class="fa fa-twitter" aria-hidden="true"></i>
+                    </a>
+                </li>
+            {% endif %}
+            {% if active_user.profile.google_plus_url %}
+                <li>
+                    <a href="{{ active_user.profile.google_plus_url }}">
+                        <i class="fa fa-google-plus" aria-hidden="true"></i>
+                    </a>
+                </li>
+            {% endif %}
+            {% if active_user.profile.github_url %}
+                <li>
+                    <a href="{{ active_user.profile.github_url }}">
+                        <i class="fa fa-github-alt" aria-hidden="true"></i>
+                    </a>
+                </li>
+            {% endif %}
         </ul><!--//social-->
     </div><!--//top-bar-->
 
     <div class="intro">
         <div class="container text-center">
             <img class="profile-image" src="./Responsive Resume_CV／Portfolio Template_files/profile-image.png" alt="">
-            <h1 class="name">James Doe</h1>
-            <div class="title">Full Stack Developer</div>
+            <h1 class="name">{{ active_user.get_full_name }}</h1>
+            <div class="title">{{ active_user.profile.title }}</div>
             <div class="profile">
-                <p>Profile info goes here. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet.</p>
+                <p>{{ active_user.profile.information }}</p>
             </div><!--//profile-->
         </div><!--//container-->
     </div><!--//intro-->
@@ -27,9 +56,10 @@
     <div class="contact-info">
         <div class="container text-center">
             <ul class="list-inline">
-                <li class="email"><i class="fa fa-envelope"></i><a href="mailto:someone@example.com">james.doe@website.com</a></li>
-                <li><i class="fa fa-phone"></i> <a href="tel: 0123456789">0123 456 7890</a></li>
-                <li class="website"><i class="fa fa-globe"></i><a href="http://themes.3rdwavemedia.com/sphere/1.1/#" target="_blank">portfoliosite.com</a></li>
+                <li class="email">
+                    <i class="fa fa-envelope"></i>
+                    <a href="mailto:{{ active_user.email }}">{{ active_user.email }}</a>
+                </li>
             </ul>
         </div><!--//container-->
     </div><!--//contact-info-->
@@ -38,15 +68,23 @@
         <div id="page-nav-wrapper" class="page-nav-wrapper text-center">
             <div class="container">
                 <ul id="page-nav" class="nav page-nav list-inline">
-                    <li class=""><a class="scrollto" href="http://themes.3rdwavemedia.com/sphere/1.1/#experiences-section">Experiences</a></li>
-                    <li class=""><a class="scrollto" href="http://themes.3rdwavemedia.com/sphere/1.1/#education-section">Education</a></li>
-                    <li class=""><a class="scrollto" href="http://themes.3rdwavemedia.com/sphere/1.1/#skills-section">Skills</a></li>
-                    <li class=""><a class="scrollto" href="http://themes.3rdwavemedia.com/sphere/1.1/#testimonials-section">Testimonials</a></li>
-                    <li class=""><a class="scrollto" href="http://themes.3rdwavemedia.com/sphere/1.1/#portfolio-section">Portfolio</a></li>
-                    <li class=""><a class="scrollto" href="http://themes.3rdwavemedia.com/sphere/1.1/#contact-section">Contact</a></li>
+                    <li class="">
+                        <a class="scrollto" href="#experiences-section">Experiences</a>
+                    </li>
+                    <li class="">
+                        <a class="scrollto" href="#education-section">Education</a>
+                    </li>
+                    <li class="">
+                        <a class="scrollto" href="#skills-section">Skills</a>
+                    </li>
+                    <li class="">
+                        <a class="scrollto" href="#testimonials-section">Testimonials</a>
+                    </li>
+                    <li class="">
+                        <a class="scrollto" href="#contact-section">Contact</a>
+                    </li>
                 </ul><!--//page-nav-->
             </div>
         </div><!--//page-nav-wrapper-->
     </div>
-
 </header><!--//header-->

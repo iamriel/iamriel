@@ -2,11 +2,19 @@ from django.contrib.auth.models import User
 from django.db import models
 
 
+class Skill(models.Model):
+    title = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.title
+
+
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
     title = models.CharField(max_length=100, blank=True)
     information = models.TextField(blank=True)
     linked_in_url = models.URLField(blank=True)
+    skills = models.ManyToManyField(Skill, through='UserSkill')
 
     def __str__(self):
         return self.user.get_full_name()
@@ -16,6 +24,10 @@ class Company(models.Model):
     name = models.CharField(max_length=100)
     address = models.CharField(max_length=100, blank=True)
     website_url = models.URLField(blank=True)
+
+    class Meta:
+        verbose_name = 'company'
+        verbose_name_plural = 'companies'
 
     def __str__(self):
         return self.name
@@ -33,14 +45,7 @@ class Experience(models.Model):
         return '{} - {}'.format(self.user, self.company)
 
 
-class Skill(models.Model):
-    title = models.CharField(max_length=20)
-
-    def __str__(self):
-        return self.title
-
-
-class TopSkill(models.Model):
+class UserSkill(models.Model):
     LEVEL_ADVANCED = 'advanced'
     LEVEL_EXPERT = 'expert'
     LEVEL_INTERMEDIATE = 'intermediate'
@@ -51,14 +56,14 @@ class TopSkill(models.Model):
         (LEVEL_INTERMEDIATE, 'Intermediate'),
     )
 
-    user = models.ForeignKey(User)
-    skill = models.ForeignKey(Skill)
-    duration = models.PositiveIntegerField(help_text='Number of years.')
+    profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    skill = models.ForeignKey(Skill, on_delete=models.CASCADE)
+    duration = models.PositiveIntegerField(help_text='Number of years.', blank=True, null=True)
     level = models.CharField(max_length=20, choices=LEVEL_CHOICES, default=LEVEL_INTERMEDIATE)
     description = models.TextField(blank=True)
 
     class Meta:
-        unique_together = ('user', 'skill', )
+        unique_together = ('profile', 'skill', )
 
     def __str__(self):
-        return '{} - {}'.format(self.user, self.skill)
+        return '{} - {}'.format(self.profile, self.skill)

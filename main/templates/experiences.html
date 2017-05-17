@@ -12,7 +12,7 @@
                 </div>
                 <div class="job-meta">
                     <div class="title">{{ experience.title }}</div>
-                    <div class="time">{{ experience.start_date.year }} - {{ experience.end_date.year|default:'Current' }}</div>
+                    <div class="time">{{ experience.start_date|date:'M Y' }} - {{ experience.end_date|date:'M Y'|default:'Current' }}</div>
                 </div><!--//job-meta-->
                 <div class="job-desc">
                     <p>{{ experience.description }}</p> 

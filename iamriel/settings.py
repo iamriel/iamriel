@@ -27,7 +27,7 @@ SECRET_KEY = '2@k3#bd@+bs6xi9j1qmpt&9oa4_mqk%!#&hz&)$$nybmyd%187'
 DEBUG = False
 
 ALLOWED_HOSTS = [
-    'iamriel.com',
+    'www.iamriel.com',
     'iamriel.herokuapp.com',
 ]
 

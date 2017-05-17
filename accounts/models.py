@@ -105,5 +105,8 @@ class Education(models.Model):
     start_date = models.DateField()
     end_date = models.DateField(blank=True, null=True)
 
+    class Meta:
+        ordering = ['-start_date']
+
     def __str__(self):
         return '{} - {}'.format(self.profile, self.school)

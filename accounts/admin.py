@@ -4,16 +4,13 @@ from django.contrib import admin
 
 from .models import (
     Company,
+    Education,
     Experience,
+    School,
     Skill,
     UserProfile,
     UserSkill,
 )
-
-
-class SkillInline(admin.TabularInline):
-    model = UserSkill
-    extra = 1
 
 
 class ExperienceInline(admin.TabularInline):
@@ -33,9 +30,20 @@ class CustomUserAdmin(UserAdmin):
     ]
 
 
+class EducationInline(admin.TabularInline):
+    model = Education
+    extra = 1
+
+
+class SkillInline(admin.TabularInline):
+    model = UserSkill
+    extra = 1
+
+
 class UserProfileAdmin(admin.ModelAdmin):
     model = UserProfile
     inlines = [
+        EducationInline,
         SkillInline,
     ]
 
@@ -44,7 +52,9 @@ admin.site.unregister(User)
 admin.site.register(User, CustomUserAdmin)
 
 admin.site.register(Company)
+admin.site.register(Education)
 admin.site.register(Experience)
+admin.site.register(School)
 admin.site.register(Skill)
 admin.site.register(UserProfile, UserProfileAdmin)
 admin.site.register(UserSkill)

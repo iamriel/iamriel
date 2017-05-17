@@ -28,7 +28,7 @@
             <div class="other-skills">
                 <h3 class="subtitle">Other Skills</h3>
                 <div class="misc-skills">
-                    {% for skill in active_user.profile.other_skills %}
+                    {% for skill in active_user.profile.other_skills.all %}
                         <span class="skill-tag">{{ skill.title }}</span>
                         {% if forloop.counter|divisibleby:5 %}<br />{% endif %}
                     {% endfor %}

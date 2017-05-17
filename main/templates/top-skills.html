@@ -1,6 +1,6 @@
 <h3 class="subtitle">Top Skills</h3>
 <div class="row">
-    {% for skill in active_user.profile.top_skills %}
+    {% for skill in active_user.profile.top_skills.all %}
         <div class="item col-xs-12 col-sm-4">
             <div class="item-inner">
                 <div class="chart-easy-pie text-center">

@@ -9,13 +9,14 @@
     {% include 'header.html' %}
 
     <div class="wrapper container">
-        <section id="experiences-section" class="experiences-section section">
+
+        {% if active_user.experiences.exists %}
             {% include 'experiences.html' %}
-        </section><!--//section-->
+        {% endif %}
         
-        <section id="education-section" class="education-section section">
+        {% if active_user.profile.educations.exists %}
             {% include 'education.html' %}
-        </section><!--//section-->
+        {% endif %}
         
         <section id="skills-section" class="skills-section section text-center">
             <h2 class="section-title">Professional Skills</h2>

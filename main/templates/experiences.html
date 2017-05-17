@@ -1,21 +1,23 @@
-<h2 class="section-title">Work Experiences</h2>
-<div class="timeline">
-    {% for experience in active_user.experiences.all %}
-        <div class="item">
-            <div class="work-place">
-                <h3 class="place">{{ experience.company }}</h3>
-                <div class="location">
-                    <i class="fa fa-map-marker" aria-hidden="true"></i>
-                    {{ experience.company.address }}
+<section id="experiences-section" class="experiences-section section">
+    <h2 class="section-title">Work Experiences</h2>
+    <div class="timeline">
+        {% for experience in active_user.experiences.all %}
+            <div class="item">
+                <div class="work-place">
+                    <h3 class="place">{{ experience.company }}</h3>
+                    <div class="location">
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>
+                        {{ experience.company.address }}
+                    </div>
                 </div>
-            </div>
-            <div class="job-meta">
-                <div class="title">{{ experience.title }}</div>
-                <div class="time">{{ experience.start_date.year }} - {{ experience.end_date.year|default:'Current' }}</div>
-            </div><!--//job-meta-->
-            <div class="job-desc">
-                <p>{{ experience.description }}</p> 
-            </div><!--//job-desc-->
-        </div><!--//item-->
-    {% endfor %}
-</div><!--//timeline-->
+                <div class="job-meta">
+                    <div class="title">{{ experience.title }}</div>
+                    <div class="time">{{ experience.start_date.year }} - {{ experience.end_date.year|default:'Current' }}</div>
+                </div><!--//job-meta-->
+                <div class="job-desc">
+                    <p>{{ experience.description }}</p> 
+                </div><!--//job-desc-->
+            </div><!--//item-->
+        {% endfor %}
+    </div><!--//timeline-->
+</section><!--//section-->

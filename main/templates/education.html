@@ -1,17 +1,19 @@
-<h2 class="section-title">Education</h2>
-<div class="row">
-    {% for education in active_user.profile.education_set.all %}
-    <div class="item col-xs-12 col-sm-4">
-        <div class="item-inner">
-            {% with study=education.field_of_study %}
-            <h3 class="degree">
-                {{ education.degree }}{% if study %}, {{ study }}{% endif %}
-            </h3>
-            {% endwith %}
-            <div class="education-body">{{ education.school.name }}</div><!--//education-body-->
-            <div class="time">{{ education.start_date.year }} - {{ education.end_date.year|default:'Current' }}</div>
-            <div class="desc">{{ education.description }}</div>
-        </div><!--//item-inner-->
-    </div><!--//item-->
-    {% endfor %}
-</div><!--//row-->
+<section id="education-section" class="education-section section">
+    <h2 class="section-title">Education</h2>
+    <div class="row">
+        {% for education in active_user.profile.educations.all %}
+        <div class="item col-xs-12 col-sm-4">
+            <div class="item-inner">
+                {% with study=education.field_of_study %}
+                <h3 class="degree">
+                    {{ education.degree }}{% if study %}, {{ study }}{% endif %}
+                </h3>
+                {% endwith %}
+                <div class="education-body">{{ education.school.name }}</div><!--//education-body-->
+                <div class="time">{{ education.start_date.year }} - {{ education.end_date.year|default:'Current' }}</div>
+                <div class="desc">{{ education.description }}</div>
+            </div><!--//item-inner-->
+        </div><!--//item-->
+        {% endfor %}
+    </div><!--//row-->
+</section><!--//section-->

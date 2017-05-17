@@ -16,6 +16,11 @@ class SkillInline(admin.TabularInline):
     extra = 1
 
 
+class ExperienceInline(admin.TabularInline):
+    model = Experience
+    extra = 1
+
+
 class UserProfileInline(admin.StackedInline):
     model = UserProfile
     verbose_name_plural = 'profile'
@@ -24,6 +29,7 @@ class UserProfileInline(admin.StackedInline):
 class CustomUserAdmin(UserAdmin):
     inlines = [
         UserProfileInline,
+        ExperienceInline,
     ]
 
 

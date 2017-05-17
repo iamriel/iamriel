@@ -22,6 +22,14 @@ class UserProfile(models.Model):
     def __str__(self):
         return self.user.get_full_name()
 
+    @property
+    def top_skills(self):
+        return self.userskill_set.order_by('-percent')[:3]
+
+    @property
+    def other_skills(self):
+        return self.skills.exclude(id__in=self.top_skills.values_list('skill', flat=True))
+
 
 class Company(models.Model):
     name = models.CharField(max_length=100)
@@ -37,12 +45,15 @@ class Company(models.Model):
 
 
 class Experience(models.Model):
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, related_name='experiences')
     company = models.ForeignKey(Company)
     title = models.CharField(max_length=100)
     description = models.TextField(blank=True)
     start_date = models.DateField()
     end_date = models.DateField(blank=True, null=True)
+
+    class Meta:
+        ordering = ['-start_date']
 
     def __str__(self):
         return '{} - {}'.format(self.user, self.company)
@@ -63,6 +74,7 @@ class UserSkill(models.Model):
     skill = models.ForeignKey(Skill, on_delete=models.CASCADE)
     duration = models.PositiveIntegerField(help_text='Number of years.', blank=True, null=True)
     level = models.CharField(max_length=20, choices=LEVEL_CHOICES, default=LEVEL_INTERMEDIATE)
+    percent = models.FloatField(default=0.0)
     description = models.TextField(blank=True)
 
     class Meta:
@@ -70,3 +82,7 @@ class UserSkill(models.Model):
 
     def __str__(self):
         return '{} - {}'.format(self.profile, self.skill)
+
+    @property
+    def title(self):
+        return self.skill.title

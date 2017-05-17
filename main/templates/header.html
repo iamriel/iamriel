@@ -43,18 +43,28 @@
         <div id="page-nav-wrapper" class="page-nav-wrapper text-center">
             <div class="container">
                 <ul id="page-nav" class="nav page-nav list-inline">
-                    <li class="">
-                        <a class="scrollto" href="#experiences-section">Experiences</a>
-                    </li>
-                    <li class="">
-                        <a class="scrollto" href="#education-section">Education</a>
-                    </li>
+                    {% if active_user.experiences.exists %}
+                        <li class="">
+                            <a class="scrollto" href="#experiences-section">Experiences</a>
+                        </li>
+                    {% endif %}
+
+                    {% if active_user.profile.educations.exists %}
+                        <li class="">
+                            <a class="scrollto" href="#education-section">Education</a>
+                        </li>
+                    {% endif %}
+
                     <li class="">
                         <a class="scrollto" href="#skills-section">Skills</a>
                     </li>
-                    <li class="">
-                        <a class="scrollto" href="#testimonials-section">Testimonials</a>
-                    </li>
+
+                    {% if active_user.profile.testimonials.exists %}
+                        <li class="">
+                            <a class="scrollto" href="#testimonials-section">Testimonials</a>
+                        </li>
+                    {% endif %}
+
                     <li class="">
                         <a class="scrollto" href="#contact-section">Contact</a>
                     </li>

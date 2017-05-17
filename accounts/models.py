@@ -17,7 +17,7 @@ class UserProfile(models.Model):
 
     @property
     def top_skills(self):
-        return self.userskill_set.order_by('-percent')[:3]
+        return self.user_skills.order_by('-percent')[:3]
 
     @property
     def other_skills(self):
@@ -70,7 +70,7 @@ class UserSkill(models.Model):
         (LEVEL_INTERMEDIATE, 'Intermediate'),
     )
 
-    profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name='user_skills')
     skill = models.ForeignKey(Skill, on_delete=models.CASCADE)
     duration = models.PositiveIntegerField(help_text='Number of years.', blank=True, null=True)
     level = models.CharField(max_length=20, choices=LEVEL_CHOICES, default=LEVEL_INTERMEDIATE)
@@ -97,7 +97,7 @@ class School(models.Model):
 
 
 class Education(models.Model):
-    profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
+    profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name='educations')
     school = models.ForeignKey(School, on_delete=models.CASCADE)
     degree = models.CharField(max_length=100, blank=True)
     field_of_study = models.CharField(max_length=100, blank=True)

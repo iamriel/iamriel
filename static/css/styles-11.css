@@ -159,6 +159,8 @@ a.btn:hover {
   top: -80px;
   margin-left: -80px;
   left: 50%;
+  border-radius: 50%;
+  border: 5px solid #fff;
 }
 .header .name {
   font-size: 48px;
@@ -618,6 +620,7 @@ a.btn:hover {
   height: 120px;
   position: absolute;
   left: 30px;
+  border-radius: 50%;
 }
 .contact-section .intro p {
   margin-bottom: 15px;

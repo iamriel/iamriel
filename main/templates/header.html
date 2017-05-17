@@ -12,36 +12,9 @@
                 Download My Resume
             </a>
         </div><!--//actions-->
-        <ul class="social list-inline">
-            {% if active_user.profile.linked_in_url %}
-                <li>
-                    <a href="{{ active_user.profile.linked_in_url }}">
-                        <i class="fa fa-linkedin" aria-hidden="true"></i>
-                    </a>
-                </li>
-            {% endif %}
-            {% if active_user.profile.twitter_url %}
-                <li>
-                    <a href="{{ active_user.profile.twitter_url }}">
-                        <i class="fa fa-twitter" aria-hidden="true"></i>
-                    </a>
-                </li>
-            {% endif %}
-            {% if active_user.profile.google_plus_url %}
-                <li>
-                    <a href="{{ active_user.profile.google_plus_url }}">
-                        <i class="fa fa-google-plus" aria-hidden="true"></i>
-                    </a>
-                </li>
-            {% endif %}
-            {% if active_user.profile.github_url %}
-                <li>
-                    <a href="{{ active_user.profile.github_url }}">
-                        <i class="fa fa-github-alt" aria-hidden="true"></i>
-                    </a>
-                </li>
-            {% endif %}
-        </ul><!--//social-->
+
+        {% include 'social-icons.html' %}
+
     </div><!--//top-bar-->
 
     <div class="intro">

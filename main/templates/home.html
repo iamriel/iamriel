@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load static from staticfiles %}
 
 {% block title %}
     {{ active_user.get_full_name }} - {{ active_user.profile.title }}
@@ -37,7 +38,7 @@
         <section id="contact-section" class="contact-section section">
             <h2 class="section-title">Get in Touch</h2>
             <div class="intro">
-                <img class="profile-image" src="./Responsive Resume_CV／Portfolio Template_files/profile-image.png" alt="">
+                <img class="profile-image" src="{% static 'img/xd.jpg' %}" alt="">
                 <div class="dialog">
                     <p>I'm currently taking on freelance work. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.</p>
                     <p><strong>I can help with the following:</strong></p>
@@ -49,13 +50,9 @@
                         <li><i class="fa fa-check" aria-hidden="true"></i> UX prototyping</li>
                     </ul>
                     <p>Drop me a line at <a href="mailto:someone@example.com">james.doe@website.com</a> or call me at <a href="tel:01234567890">0123 456 7890</a></p>
-                    <ul class="social list-inline">
-                        <li><a href="http://themes.3rdwavemedia.com/sphere/1.1/#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
-                        <li><a href="http://themes.3rdwavemedia.com/sphere/1.1/#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-                        <li><a href="http://themes.3rdwavemedia.com/sphere/1.1/#"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
-                        <li><a href="http://themes.3rdwavemedia.com/sphere/1.1/#"><i class="fa fa-github-alt" aria-hidden="true"></i></a></li>
-                        <li><a href="http://themes.3rdwavemedia.com/sphere/1.1/#"><i class="fa fa-skype" aria-hidden="true"></i></a></li>
-                    </ul><!--//social-->
+
+                    {% include 'social-icons.html' %}
+
                 </div><!--//diaplog-->
             </div><!--//intro-->
 

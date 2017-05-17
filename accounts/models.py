@@ -110,3 +110,19 @@ class Education(models.Model):
 
     def __str__(self):
         return '{} - {}'.format(self.profile, self.school)
+
+
+class Testimonial(models.Model):
+    profile = models.ForeignKey(UserProfile, on_delete=models.CASCADE, related_name='testimonials')
+    name = models.CharField(
+        max_length=50, help_text='Name of the person who gave the testimony.'
+    )
+    title = models.CharField(
+        max_length=50, blank=True,
+        help_text='Position of the person who gave the testimony.'
+    )
+    company = models.CharField(max_length=20, blank=True)
+    description = models.TextField()
+
+    def __str__(self):
+        return '{} - {}'.format(self.profile, self.name)

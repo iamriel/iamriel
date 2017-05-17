@@ -8,6 +8,7 @@ from .models import (
     Experience,
     School,
     Skill,
+    Testimonial,
     UserProfile,
     UserSkill,
 )
@@ -40,11 +41,17 @@ class SkillInline(admin.TabularInline):
     extra = 1
 
 
+class TestimonialInline(admin.TabularInline):
+    model = Testimonial
+    extra = 1
+
+
 class UserProfileAdmin(admin.ModelAdmin):
     model = UserProfile
     inlines = [
         EducationInline,
         SkillInline,
+        TestimonialInline,
     ]
 
 
@@ -56,5 +63,6 @@ admin.site.register(Education)
 admin.site.register(Experience)
 admin.site.register(School)
 admin.site.register(Skill)
+admin.site.register(Testimonial)
 admin.site.register(UserProfile, UserProfileAdmin)
 admin.site.register(UserSkill)

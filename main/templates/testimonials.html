@@ -5,48 +5,30 @@
 
         <!-- Indicators -->
         <ol class="carousel-indicators">
-            <li data-target="#testimonials-carousel" data-slide-to="0" class="active"></li>
-            <li data-target="#testimonials-carousel" data-slide-to="1"></li>
-            <li data-target="#testimonials-carousel" data-slide-to="2"></li>
+            {% for testimony in active_user.profile.testimonials.all %}
+            <li data-target="#testimonials-carousel" data-slide-to="{{ forloop.counter0 }}"
+                {% if forloop.first %}class="active"{% endif %}></li>
+            {% endfor %}
         </ol>
 
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
-            <div class="item active">
+            {% for testimony in active_user.profile.testimonials.all %}
+            <div class="item {% if forloop.first %}active{% endif %}">
                 <blockquote class="quote">      
                     <i class="fa fa-quote-left"></i>                            
-                    <p>James is an excellent software engineer and he is passionate about what he does. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Suspendisse porttitor metus eros.</p>
+                    <p>{{ testimony.description }}</p>
                 </blockquote>    
                 <div class="source">
-                    <div class="name">Rob Olson</div>
-                    <div class="position">Product Manager, Apple</div>
+                    <div class="name">{{ testimony.name }}</div>
+                    <div class="position">
+                        {{ testimony.title }}{% if testimony.title and testimony.company %},{% endif %}
+                        {{ testimony.company }}
+                    </div>
                 </div><!--//source-->   
-
             </div><!--//item-->
-            <div class="item">
-                <blockquote class="quote">
-                    <p><i class="fa fa-quote-left"></i>
-                    Sed massa leo, aliquet non velit eu, volutpat vulputate odio. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse porttitor metus eros, ut fringilla nulla auctor a.</p>
-
-                </blockquote>
-                <div class="source">
-                    <div class="name">Christina Jensen</div>
-                    <div class="position">Senior Developer, Twitter</div>
-                </div><!--//source-->   
-
-            </div><!--//item-->
-            <div class="item">
-                <blockquote class="quote">
-                    <p><i class="fa fa-quote-left"></i>
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes</p>
-                </blockquote>       
-                <div class="source">
-                    <div class="name">Austin Ward</div>
-                    <div class="position">CEO, Startup Hub</div>
-                </div><!--//source-->          
-            </div><!--//item-->
-
+            {% endfor %}
         </div><!--//carousel-inner-->
-    </div><!--//testimonials-carousel-->
 
+    </div><!--//testimonials-carousel-->
 </section><!--//section-->

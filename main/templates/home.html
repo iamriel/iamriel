@@ -35,6 +35,10 @@
                 </div>
             </div><!--//other-skills-->
         </section><!--//skills-section-->
+
+        {% if active_user.profile.testimonials.exists %}
+            {% include 'testimonials.html' %}
+        {% endif %}
         
         <section id="contact-section" class="contact-section section">
             <h2 class="section-title">Get in Touch</h2>

@@ -6,6 +6,13 @@
             </a>
         </li>
     {% endif %}
+    {% if active_user.profile.stack_overflow_url %}
+        <li>
+            <a href="{{ active_user.profile.stack_overflow_url }}" target="_blank">
+                <i class="fa fa-stack-overflow" aria-hidden="true"></i>
+            </a>
+        </li>
+    {% endif %}
     {% if active_user.profile.twitter_url %}
         <li>
             <a href="{{ active_user.profile.twitter_url }}" target="_blank">

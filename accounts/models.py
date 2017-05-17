@@ -10,6 +10,7 @@ class UserProfile(models.Model):
     google_plus_url = models.URLField(blank=True)
     linked_in_url = models.URLField(blank=True)
     twitter_url = models.URLField(blank=True)
+    skype_username = models.CharField(max_length=20, blank=True)
     skills = models.ManyToManyField('Skill', through='UserSkill')
 
     def __str__(self):

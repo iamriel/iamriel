@@ -27,4 +27,11 @@
             </a>
         </li>
     {% endif %}
+    {% if active_user.profile.github_url %}
+        <li>
+            <a href="skype:{{ active_user.profile.skype_username }}?chat">
+                <i class="fa fa-skype" aria-hidden="true"></i>
+            </a>
+        </li>
+    {% endif %}
 </ul><!--//social-->

@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 
+{% block title %}
+    {{ active_user.get_full_name }} - {{ active_user.profile.title }}
+{% endblock title %}
+
 {% block container %}
+    {% include 'header.html' %}
+
     <div class="wrapper container">
         <section id="experiences-section" class="experiences-section section">
             {% include 'experiences.html' %}
@@ -9,7 +15,6 @@
         <section id="education-section" class="education-section section">
             {% include 'education.html' %}
         </section><!--//section-->
-        
         
         <section id="skills-section" class="skills-section section text-center">
             <h2 class="section-title">Professional Skills</h2>
@@ -21,194 +26,13 @@
             <div class="other-skills">
                 <h3 class="subtitle">Other Skills</h3>
                 <div class="misc-skills">
-                    <span class="skill-tag">HTML5</span>
-                    <span class="skill-tag">CSS3</span>
-                    <span class="skill-tag">SASS</span>
-                    <span class="skill-tag">LESS</span>
-                    <span class="skill-tag">Git</span>
-                    <br>
-                    <span class="skill-tag">Ruby</span>
-                    <span class="skill-tag">PHP</span>
-                    <span class="skill-tag">Wireframe</span>
-                    <span class="skill-tag">Spanish</span>
-                    <span class="skill-tag">French</span>
+                    {% for skill in active_user.profile.other_skills %}
+                        <span class="skill-tag">{{ skill.title }}</span>
+                        {% if forloop.counter|divisibleby:5 %}<br />{% endif %}
+                    {% endfor %}
                 </div>
             </div><!--//other-skills-->
-            
         </section><!--//skills-section-->
-        
-        <section id="testimonials-section" class="testimonials-section section">
-            <h2 class="section-title">Testimonials</h2>
-            
-            <div id="testimonials-carousel" class="testimonials-carousel carousel slide" data-interval="8000">
-                
-                <!-- Indicators -->
-                <ol class="carousel-indicators">
-                    <li data-target="#testimonials-carousel" data-slide-to="0" class="active"></li>
-                    <li data-target="#testimonials-carousel" data-slide-to="1"></li>
-                    <li data-target="#testimonials-carousel" data-slide-to="2"></li>
-                </ol>
-                
-                <!-- Wrapper for slides -->
-                <div class="carousel-inner">
-                    <div class="item active">
-                        <blockquote class="quote">      
-                            <i class="fa fa-quote-left"></i>                            
-                            <p>James is an excellent software engineer and he is passionate about what he does. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Suspendisse porttitor metus eros.</p>
-                        </blockquote>    
-                        <div class="source">
-                            <div class="name">Rob Olson</div>
-                            <div class="position">Product Manager, Apple</div>
-                        </div><!--//source-->   
-                                                       
-                    </div><!--//item-->
-                    <div class="item">
-                        <blockquote class="quote">
-                            <p><i class="fa fa-quote-left"></i>
-                            Sed massa leo, aliquet non velit eu, volutpat vulputate odio. Interdum et malesuada fames ac ante ipsum primis in faucibus. Suspendisse porttitor metus eros, ut fringilla nulla auctor a.</p>
-                            
-                        </blockquote>
-                        <div class="source">
-                            <div class="name">Christina Jensen</div>
-                            <div class="position">Senior Developer, Twitter</div>
-                        </div><!--//source-->   
-               
-                    </div><!--//item-->
-                    <div class="item">
-                        <blockquote class="quote">
-                            <p><i class="fa fa-quote-left"></i>
-                            Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes</p>
-                        </blockquote>       
-                        <div class="source">
-                            <div class="name">Austin Ward</div>
-                            <div class="position">CEO, Startup Hub</div>
-                        </div><!--//source-->          
-                    </div><!--//item-->
-                    
-                </div><!--//carousel-inner-->
-            </div><!--//testimonials-carousel-->
-            
-        </section><!--//section-->
-        
-        
-        <section id="portfolio-section" class="portfolio-section section">
-            <h2 class="section-title">Portfolio</h2>
-            <ul id="filters" class="filters clearfix">
-                <li class="type active" data-filter="*">All</li>
-                <li class="type" data-filter=".backend">Back-end</li>
-                <li class="type" data-filter=".frontend">Front-end</li>
-            </ul><!--//filters-->
-            <div class="items-wrapper isotope row" style="position: relative; height: 624px;">
-                <div class="item frontend col-md-3 col-xs-6 " style="position: absolute; left: 0px; top: 0px;">
-                    <div class="item-inner">
-                        <figure class="figure">
-                            <img class="img-responsive" src="./Responsive Resume_CV／Portfolio Template_files/portfolio-1.jpg" alt="">
-                        </figure>
-                        <div class="content text-left">
-                            <h3 class="sub-title"><a href="http://themes.3rdwavemedia.com/sphere/1.1/#">Project Lorem Ipsum</a></h3>
-                            <div class="meta">AngularJS</div>
-                            <div class="action"><a href="http://themes.3rdwavemedia.com/sphere/1.1/#">View on Github</a></div>
-                        </div><!--//content-->    
-                        <a class="link-mask" href="http://themes.3rdwavemedia.com/sphere/1.1/#"></a>              
-                    </div><!--//item-inner-->
-                </div><!--//item-->
-                <div class="item backend col-md-3 col-xs-6 " style="position: absolute; left: 270px; top: 0px;">
-                    <div class="item-inner">
-                        <figure class="figure">
-                            <img class="img-responsive" src="./Responsive Resume_CV／Portfolio Template_files/portfolio-2.jpg" alt="">
-                        </figure>
-                        <div class="content text-left">
-                            <h3 class="sub-title"><a href="http://themes.3rdwavemedia.com/sphere/1.1/#">Project Lorem Ipsum</a></h3>
-                            <div class="meta">Django</div>
-                            <div class="action"><a href="http://themes.3rdwavemedia.com/sphere/1.1/#">View on Github</a></div>
-                        </div><!--//content-->    
-                        <a class="link-mask" href="http://themes.3rdwavemedia.com/sphere/1.1/#"></a>              
-                    </div><!--//item-inner-->
-                </div><!--//item-->
-                <div class="item backend frontend col-md-3 col-xs-6 " style="position: absolute; left: 540px; top: 0px;">
-                    <div class="item-inner">
-                        <figure class="figure">
-                            <img class="img-responsive" src="./Responsive Resume_CV／Portfolio Template_files/portfolio-3.jpg" alt="">
-                        </figure>
-                        <div class="content text-left">
-                            <h3 class="sub-title"><a href="http://themes.3rdwavemedia.com/sphere/1.1/#">Project Lorem Ipsum</a></h3>
-                            <div class="meta">Django/JavaScript</div>
-                            <div class="action"><a href="http://themes.3rdwavemedia.com/sphere/1.1/#">View on Github</a></div>
-                        </div><!--//content-->    
-                        <a class="link-mask" href="http://themes.3rdwavemedia.com/sphere/1.1/#"></a>              
-                    </div><!--//item-inner-->
-                </div><!--//item-->
-                <div class="item frontend col-md-3 col-xs-6 " style="position: absolute; left: 810px; top: 0px;">
-                    <div class="item-inner">
-                        <figure class="figure">
-                            <img class="img-responsive" src="./Responsive Resume_CV／Portfolio Template_files/portfolio-4.jpg" alt="">
-                        </figure>
-                        <div class="content text-left">
-                            <h3 class="sub-title"><a href="http://themes.3rdwavemedia.com/sphere/1.1/#">Project Lorem Ipsum</a></h3>
-                            <div class="meta">ReactJS</div>
-                            <div class="action"><a href="http://themes.3rdwavemedia.com/sphere/1.1/#">View on Github</a></div>
-                        </div><!--//content-->    
-                        <a class="link-mask" href="http://themes.3rdwavemedia.com/sphere/1.1/#"></a>              
-                    </div><!--//item-inner-->
-                </div><!--//item-->
-                <div class="item backend col-md-3 col-xs-6 " style="position: absolute; left: 0px; top: 312px;">
-                    <div class="item-inner">
-                        <figure class="figure">
-                            <img class="img-responsive" src="./Responsive Resume_CV／Portfolio Template_files/portfolio-5.jpg" alt="">
-                        </figure>
-                        <div class="content text-left">
-                            <h3 class="sub-title"><a href="http://themes.3rdwavemedia.com/sphere/1.1/#">Project Lorem Ipsum</a></h3>
-                            <div class="meta">Python</div>
-                            <div class="action"><a href="http://themes.3rdwavemedia.com/sphere/1.1/#">View on Github</a></div>
-                        </div><!--//content-->    
-                        <a class="link-mask" href="http://themes.3rdwavemedia.com/sphere/1.1/#"></a>              
-                    </div><!--//item-inner-->
-                </div><!--//item-->
-                <div class="item backend col-md-3 col-xs-6 " style="position: absolute; left: 270px; top: 312px;">
-                    <div class="item-inner">
-                        <figure class="figure">
-                            <img class="img-responsive" src="./Responsive Resume_CV／Portfolio Template_files/portfolio-6.jpg" alt="">
-                        </figure>
-                        <div class="content text-left">
-                            <h3 class="sub-title"><a href="http://themes.3rdwavemedia.com/sphere/1.1/#">Project Lorem Ipsum</a></h3>
-                            <div class="meta">JavaScript</div>
-                            <div class="action"><a href="http://themes.3rdwavemedia.com/sphere/1.1/#">View on Github</a></div>
-                        </div><!--//content-->    
-                        <a class="link-mask" href="http://themes.3rdwavemedia.com/sphere/1.1/#"></a>              
-                    </div><!--//item-inner-->
-                </div><!--//item-->
-                
-                <div class="item frontend col-md-3 col-xs-6 " style="position: absolute; left: 540px; top: 312px;">
-                    <div class="item-inner">
-                        <figure class="figure">
-                            <img class="img-responsive" src="./Responsive Resume_CV／Portfolio Template_files/portfolio-7.jpg" alt="">
-                        </figure>
-                        <div class="content text-left">
-                            <h3 class="sub-title"><a href="http://themes.3rdwavemedia.com/sphere/1.1/#">Project Lorem Ipsum</a></h3>
-                            <div class="meta">HTML/AngularJS</div>
-                            <div class="action"><a href="http://themes.3rdwavemedia.com/sphere/1.1/#">View on Github</a></div>
-                        </div><!--//content-->    
-                        <a class="link-mask" href="http://themes.3rdwavemedia.com/sphere/1.1/#"></a>              
-                    </div><!--//item-inner-->
-                </div><!--//item-->
-                
-                <div class="item frontend backend col-md-3 col-xs-6 " style="position: absolute; left: 810px; top: 312px;">
-                    <div class="item-inner">
-                        <figure class="figure">
-                            <img class="img-responsive" src="./Responsive Resume_CV／Portfolio Template_files/portfolio-8.jpg" alt="">
-                        </figure>
-                        <div class="content text-left">
-                            <h3 class="sub-title"><a href="http://themes.3rdwavemedia.com/sphere/1.1/#">Project Lorem Ipsum</a></h3>
-                            <div class="meta">Python/AngularJS</div>
-                            <div class="action"><a href="http://themes.3rdwavemedia.com/sphere/1.1/#">View on Github</a></div>
-                        </div><!--//content-->    
-                        <a class="link-mask" href="http://themes.3rdwavemedia.com/sphere/1.1/#"></a>              
-                    </div><!--//item-inner-->
-                </div><!--//item-->
-                
-            </div><!--//item-wrapper-->
-            
-        </section><!--//section-->
         
         <section id="contact-section" class="contact-section section">
             <h2 class="section-title">Get in Touch</h2>

@@ -1,39 +1,22 @@
 <h3 class="subtitle">Top Skills</h3>
 <div class="row">
-    <div class="item col-xs-12 col-sm-4">
-        <div class="item-inner">
-            <div class="chart-easy-pie text-center">
-                <div class="chart-theme-1 chart" data-percent="98"><span>98</span>%<canvas height="110" width="110"></canvas><canvas height="110" width="110"></canvas><canvas height="110" width="110"></canvas><canvas height="110" width="110"></canvas><canvas height="110" width="110"></canvas></div>
-            </div>
-            <h4 class="skill-name">Python &amp; Django</h4>
-            <div class="level">Expert, 8 years</div>
-            <div class="desc">
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient 
-            </div>
-        </div><!--//item-inner-->
-    </div><!--//item-->
-    <div class="item col-xs-12 col-sm-4">
-        <div class="item-inner">
-            <div class="chart-easy-pie text-center">
-                <div class="chart-theme-1 chart" data-percent="90"><span>90</span>%<canvas height="110" width="110"></canvas><canvas height="110" width="110"></canvas><canvas height="110" width="110"></canvas><canvas height="110" width="110"></canvas><canvas height="110" width="110"></canvas></div>
-            </div>
-            <h4 class="skill-name">JavaScript</h4>
-            <div class="level">Expert, 8 years</div>
-            <div class="desc">
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient 
-            </div>
-        </div><!--//item-inner-->
-    </div><!--//item-->
-    <div class="item col-xs-12 col-sm-4">
-        <div class="item-inner">
-            <div class="chart-easy-pie text-center">
-                <div class="chart-theme-1 chart" data-percent="85"><span>85</span>%<canvas height="110" width="110"></canvas><canvas height="110" width="110"></canvas><canvas height="110" width="110"></canvas><canvas height="110" width="110"></canvas><canvas height="110" width="110"></canvas></div>
-            </div>
-            <h4 class="skill-name">React &amp; Angular</h4>
-            <div class="level">Advanced, 4 years</div>
-            <div class="desc">
-                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient 
-            </div>
-        </div><!--//item-inner-->
-    </div><!--//item-->
+    {% for skill in active_user.profile.top_skills %}
+        <div class="item col-xs-12 col-sm-4">
+            <div class="item-inner">
+                <div class="chart-easy-pie text-center">
+                    <div class="chart-theme-1 chart" data-percent="{{ skill.percent }}">
+                        <span>{{ skill.percent }}</span>%
+                        <canvas height="110" width="110"></canvas>
+                        <canvas height="110" width="110"></canvas>
+                        <canvas height="110" width="110"></canvas>
+                        <canvas height="110" width="110"></canvas>
+                        <canvas height="110" width="110"></canvas>
+                    </div>
+                </div>
+                <h4 class="skill-name">{{ skill.title }}</h4>
+                <div class="level">{{ skill.get_level_display }}, {{ skill.duration }} years</div>
+                <div class="desc">{{ skill.description }}</div>
+            </div><!--//item-inner-->
+        </div><!--//item-->
+    {% endfor %}
 </div><!--//row-->

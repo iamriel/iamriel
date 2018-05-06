@@ -13,18 +13,18 @@
         {% if active_user.experiences.exists %}
             {% include 'experiences.html' %}
         {% endif %}
-        
+
         {% if active_user.profile.educations.exists %}
             {% include 'education.html' %}
         {% endif %}
-        
+
         <section id="skills-section" class="skills-section section text-center">
             <h2 class="section-title">Professional Skills</h2>
 
             <div class="top-skills">
                 {% include 'top-skills.html' %}
             </div><!--//top-skills-->
-            
+
             <div class="other-skills">
                 <h3 class="subtitle">Other Skills</h3>
                 <div class="misc-skills">
@@ -39,7 +39,7 @@
         {% if active_user.profile.testimonials.exists %}
             {% include 'testimonials.html' %}
         {% endif %}
-        
+
         <section id="contact-section" class="contact-section section">
             <h2 class="section-title">Get in Touch</h2>
             <div class="intro">
@@ -73,6 +73,6 @@
             </div><!--//intro-->
 
         </section><!--//section-->
-        
+
     </div><!--//wrapper-->
 {% endblock container %}

@@ -64,7 +64,7 @@ a.btn {
 .btn:hover,
 a.btn:hover {
   color: #fff;
-  background: #566f7c;
+  background: #566f7c !important;
 }
 #topcontrol {
   -webkit-transition: all 0.4s ease-in-out;

@@ -3,7 +3,7 @@ from django.db import models
 
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, related_name='profile')
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     title = models.CharField(max_length=100, blank=True)
     information = models.TextField(blank=True)
     github_url = models.URLField(blank=True)
@@ -40,8 +40,8 @@ class Company(models.Model):
 
 
 class Experience(models.Model):
-    user = models.ForeignKey(User, related_name='experiences')
-    company = models.ForeignKey(Company)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='experiences')
+    company = models.ForeignKey(Company, on_delete=models.CASCADE)
     title = models.CharField(max_length=100)
     description = models.TextField(blank=True)
     start_date = models.DateField()
@@ -128,3 +128,13 @@ class Testimonial(models.Model):
 
     def __str__(self):
         return '{} - {}'.format(self.profile, self.name)
+
+
+class Email(models.Model):
+    email = models.EmailField()
+    subject = models.CharField(max_length=200)
+    message = models.TextField()
+    created_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.email

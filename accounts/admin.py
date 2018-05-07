@@ -5,6 +5,7 @@ from django.contrib import admin
 from .models import (
     Company,
     Education,
+    Email,
     Experience,
     School,
     Skill,
@@ -53,6 +54,11 @@ class UserProfileAdmin(admin.ModelAdmin):
         SkillInline,
         TestimonialInline,
     ]
+
+
+@admin.register(Email)
+class EmailAdmin(admin.ModelAdmin):
+    list_display = ('email', 'subject', )
 
 
 admin.site.unregister(User)

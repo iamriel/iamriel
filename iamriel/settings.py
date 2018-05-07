@@ -24,11 +24,12 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '2@k3#bd@+bs6xi9j1qmpt&9oa4_mqk%!#&hz&)$$nybmyd%187'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.environ.get('DEBUG', False)
 
 ALLOWED_HOSTS = [
     'www.iamriel.com',
     'iamriel.herokuapp.com',
+    'localhost',
 ]
 
 # Application definition
@@ -132,3 +133,11 @@ STATICFILES_DIRS = (
 # https://warehouse.python.org/project/whitenoise/
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
+
+ACTIVE_USERNAME = os.environ.get('ACTIVE_USERNAME', 'iamriel')
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = os.environ.get('EMAIL_HOST', 'smtp.gmail.com')
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', 'me@iamriel.com')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', 'test')
+EMAIL_PORT = os.environ.get('EMAIL_PORT', 587)
